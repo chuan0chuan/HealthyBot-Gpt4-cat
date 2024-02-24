@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.body-spacer {
+  margin: 1rem;
+}
+.navbar-brand {
+  font-size: 30px !important; /* 设置标题字体大小为 24 像素 */
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中对齐所有子项 */
+  height: 100vh; /* 容器高度设置为视口高度 */
+  padding: 20px; /* 根据需要添加内边距 */
+}
+
+.image-and-text-container {
+  text-align: center; /* 确保文本居中对齐 */
+  display: flex;
+  flex-direction: column; /* 垂直堆叠图片和文本 */
+  align-items: center; /* 水平居中对齐图片和文本 */
+  margin-top: 250px; /* 向上调整位置 */
+}
+
+.circle-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.image-and-text-container p {
+  font-size: 35px;
+}
+/* 输入框和按钮的容器 */
+.input-form {
+  position: fixed; /* 固定位置 */
+  bottom: 50px; /* 离底部有一定距离，根据需要调整 */
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 根据宽度调整位置，确保居中 */
+  width:  95%; /* 或者指定一个宽度，如 90% 或 600px 最大宽度 */
+  max-width: 720px;
+}
+
+.input-group-custom {
+  width: 100%; /* 输入组自适应容器宽度 */
+}
+
+.upload-icon {
+  height: 50px; /* 设置图标高度 */
+  width: auto; /* 保持图标宽高比 */
+  margin-right: 3px; /* 在图标和输入框之间添加一些间隔 */
+  opacity: 0.6; /* 设置图标透明度为50% */
+}
+
+
+.btn-custom {
+  border-radius: 50%; /* 圆形按钮 */
+  /* 移除margin-left: -46px; 使用padding调整内部SVG图标大小 */
+  padding: 8px; /* 或根据需要调整按钮内部空间 */
+}
+
+.btn-custom svg {
+  width: 29px; /* 设置SVG图标的宽度 */
+  height: 29px; /* 设置SVG图标的高度 */
+}
+
+.recipe-container{
+  margin-top: 250px; /* 向上调整位置 */
+}
+
+.background-component {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.busters-container {
+  position: relative; /* 使 .busters-container 成为 .background-component 的相对定位的容器 */
+  margin-top: 100px; /* 向上调整位置 */
+  
+}
+
+.keywords-container {
+  display: flex; /* 使用 Flex 布局 */
+  flex-direction: column; /* 上下分布 */
+  gap: 20px; /* 设置框框之间的间距 */
+  padding: 20px; /* 添加内边距 */
+  margin-top: 100px; /* 向上调整位置 */
+}
+
+.keywords-box {
+  width: calc(90vw - 40px); /* 视口宽度减去一定的值（例如左右的内边距总和） */
+  max-width: 1200px; /* 设置一个最大宽度以保持内容的可读性 */
+  margin: 20px; /* 根据实际情况调整，确保在容器中居中显示 */
+  height: 20vh; /* 设置高度为视口高度 */
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: auto;
+  box-sizing: border-box; /* 确保边框和内边距不会增加元素的总宽度 */
+}
+
+.keywords-box-large {
+  height: 400px; /* 使得这个框框的高度比上面的更高 */
+}
+
+
+.drawer-icon {
+  width: 30px; /* 设置图片的宽度 */
+  height: auto; /* 高度自适应以保持图片比例 */
+}
+
+
+
+
+/* 这里还可以添加其他样式，如边框宽度、颜色等 */
