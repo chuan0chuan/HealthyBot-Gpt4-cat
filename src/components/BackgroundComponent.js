@@ -1,7 +1,7 @@
 // BackgroundComponent.js
 
 import React from 'react';
-import catImage from "../assets/cat01.png";
+import catImage from "../assets/cat02.png";
 
 function BackgroundComponent({ transparent }) {
   const containerStyle = {
@@ -10,7 +10,7 @@ function BackgroundComponent({ transparent }) {
 
   return (
     <div className="image-and-text-container" style={containerStyle}>
-      <img src={catImage} alt="Purrfessor" className="circle-image" />
+      <img style= {{width: '280px', height:'280px'}} src={catImage} alt="Purrfessor"  />
       <p>Hey, I am your Purrfessor!</p>
     </div>
   );

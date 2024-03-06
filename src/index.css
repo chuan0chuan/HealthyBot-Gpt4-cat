@@ -15,24 +15,33 @@ code {
 .body-spacer {
   margin: 1rem;
 }
+
 .navbar-brand {
   font-size: 30px !important; /* 设置标题字体大小为 24 像素 */
 }
 
 .content-container {
+  position: relative; /* Add this line */
   display: flex;
   flex-direction: column;
-  align-items: center; /* 水平居中对齐所有子项 */
-  height: 100vh; /* 容器高度设置为视口高度 */
-  padding: 20px; /* 根据需要添加内边距 */
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
 }
 
 .image-and-text-container {
-  text-align: center; /* 确保文本居中对齐 */
+  position: absolute; /* Change to absolute positioning */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; /* Center vertically and horizontally */
   display: flex;
-  flex-direction: column; /* 垂直堆叠图片和文本 */
-  align-items: center; /* 水平居中对齐图片和文本 */
-  margin-top: 250px; /* 向上调整位置 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Add this line to center vertically inside the container */
+  text-align: center;
+  z-index: -1;
 }
 
 .circle-image {
@@ -46,41 +55,41 @@ code {
 .image-and-text-container p {
   font-size: 35px;
 }
-/* 输入框和按钮的容器 */
+
 .input-form {
-  position: fixed; /* 固定位置 */
-  bottom: 50px; /* 离底部有一定距离，根据需要调整 */
-  left: 50%; /* 水平居中 */
-  transform: translateX(-50%); /* 根据宽度调整位置，确保居中 */
-  width:  95%; /* 或者指定一个宽度，如 90% 或 600px 最大宽度 */
-  max-width: 720px;
+  position: fixed; 
+  bottom: 50px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width:  95%; 
+  max-width: 800px;
 }
 
 .input-group-custom {
-  width: 100%; /* 输入组自适应容器宽度 */
+  width: 100%; 
 }
 
 .upload-icon {
-  height: 50px; /* 设置图标高度 */
-  width: auto; /* 保持图标宽高比 */
-  margin-right: 3px; /* 在图标和输入框之间添加一些间隔 */
-  opacity: 0.6; /* 设置图标透明度为50% */
+  height: 50px; 
+  width: auto; 
+  margin-right: 3px;
+  opacity: 0.6;
 }
 
 
 .btn-custom {
-  border-radius: 50%; /* 圆形按钮 */
+  border-radius: 50%; 
   /* 移除margin-left: -46px; 使用padding调整内部SVG图标大小 */
-  padding: 8px; /* 或根据需要调整按钮内部空间 */
+  padding: 8px; 
 }
 
 .btn-custom svg {
-  width: 29px; /* 设置SVG图标的宽度 */
-  height: 29px; /* 设置SVG图标的高度 */
+  width: 29px;
+  height: 29px; 
 }
 
 .recipe-container{
-  margin-top: 250px; /* 向上调整位置 */
+  margin-top: 250px;
 }
 
 .background-component {
@@ -91,43 +100,61 @@ code {
 }
 
 .busters-container {
-  position: relative; /* 使 .busters-container 成为 .background-component 的相对定位的容器 */
-  margin-top: 100px; /* 向上调整位置 */
+  position: relative;
+  margin-top: 100px; 
   
 }
 
 .keywords-container {
-  display: flex; /* 使用 Flex 布局 */
-  flex-direction: column; /* 上下分布 */
-  gap: 20px; /* 设置框框之间的间距 */
-  padding: 20px; /* 添加内边距 */
-  margin-top: 100px; /* 向上调整位置 */
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px;
+  padding: 20px;
+  margin-top: 100px; 
 }
 
 .keywords-box {
-  width: calc(90vw - 40px); /* 视口宽度减去一定的值（例如左右的内边距总和） */
-  max-width: 1200px; /* 设置一个最大宽度以保持内容的可读性 */
-  margin: 20px; /* 根据实际情况调整，确保在容器中居中显示 */
-  height: 20vh; /* 设置高度为视口高度 */
+  width: calc(90vw - 40px);
+  max-width: 1200px;
+  margin: 20px; 
+  height: 20vh; 
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.5);
   overflow: auto;
-  box-sizing: border-box; /* 确保边框和内边距不会增加元素的总宽度 */
+  box-sizing: border-box; 
 }
 
 .keywords-box-large {
-  height: 400px; /* 使得这个框框的高度比上面的更高 */
+  height: 400px;
 }
 
 
 .drawer-icon {
-  width: 30px; /* 设置图片的宽度 */
-  height: auto; /* 高度自适应以保持图片比例 */
+  width: 30px;
+  height: auto; 
+}
+
+.recipe-container {
+  margin-top: 100px;
+}
+
+.recipe-container .card {
+  margin: 20px; 
+}
+
+.modal-body {
+  font-size: 1.2em; 
+}
+
+.modal-body h5 {
+  font-size: 1.2em;
+}
+
+.custom-modal-dialog {
+  max-width: 1000px;
+  width: 80%; 
 }
 
 
-
-
-/* 这里还可以添加其他样式，如边框宽度、颜色等 */

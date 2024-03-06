@@ -8,19 +8,17 @@ function MythBusters() {
 
   const handleKeywordClick = (keyword) => {
     setSelectedKeyword(keyword);
-  };
+  }; 
 
   return (
     <div className="content-container">
-      <div className="background-component">
-        <BackgroundComponent transparent={true} />
-      </div>
+        <BackgroundComponent transparent={true}/>
       <div className="keywords-container">
         {/* 左侧框框 */}
         <div className="keywords-box">
           {/* 上半部分：关键字列表 */}
           <div style={{ overflowY: 'auto' }}>
-            <h2>Keywords</h2>
+            <h2>Red flags for misleading claims</h2>
             <ul>
           {keywords.map((keyword, index) => (
             <li key={index} style={{ cursor: 'pointer', listStyleType: 'none' }} onClick={() => handleKeywordClick(keyword)}>
