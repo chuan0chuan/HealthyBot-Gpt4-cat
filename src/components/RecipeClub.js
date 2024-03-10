@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
 import guacamoleImage from '../assets/guacamoleImage.png'; // 确保图片路径正确
 import broccoliPotatoSoup from '../assets/broccoliPotatoSoup.png'; // 确保图片路径正确
-import mushroomBeefSloppyJoes from '../assets/mushroomBeefSloppyJoes.png'; // 确保图片路径正确
+import appleSpinachSalad from '../assets/appleSpinachSalad.png'; // 确保图片路径正确
 import pineappleFrozenFruitPops from '../assets/pineappleFrozenFruitPops.png'; // 确保图片路径正确
 import springRoll from '../assets/springRolls.png'; // 确保图片路径正确
 import cranberryAppleFarroStuffing from '../assets/cranberryAppleFarroStuffing.png'; // 确保图片路径正确
 
 function RecipeModal() { 
-  const recipes = [{ // 注意这里是一个数组
+  const recipes = [{ 
     id: 1,
     title: 'Homemade Guacamole',
     category: '30 Minutes or Less, Kid-Friendly',
@@ -45,45 +45,43 @@ function RecipeModal() {
     image: guacamoleImage, // 假设你有相应的图片
   },
   {
-    id: 2,
-    title: 'Mushroom Beef Sloppy Joes',
-    category: '30 Minutes or Less, Kid-Friendly',
-    foodGroup: 'Vegetables, Protein, Grains',
-    description: 'Chopped mushrooms, when sautéed, blend seamlessly with ground meats. Swapping or adding mushrooms to a recipe can add an extra serving of vegetables to the plate.',
-    yield: '4 servings',
-    ingredients: [
-      '1/2 pound mushrooms (white button)',
-      '1/2 pound mushrooms (cremini)',
-      '1/4 pound ground beef (90% lean)',
-      '1 1/2 teaspoons canola oil',
-      '1/2 cup onion (chopped)',
-      '1 clove garlic (minced)',
-      '8 ounces tomato sauce (no-salt-added)',
-      '1 tablespoon chili powder',
-      '3 teaspoons brown sugar',
-      '1 teaspoon cider vinegar',
-      '1/8 teaspoon black pepper (ground)',
-      '4 hamburger buns (whole-wheat)',
+    "id": 2,
+    "title": "Apple Spinach Salad",
+    "category": "30 Minutes or Less",
+    "foodGroup": "Fruits, Vegetables, Dairy",
+    "description": "Add more fruits and vegetables to your day with this simple, flavorful salad.",
+    "yield": "6, 1/2 cup servings",
+    "ingredients": [
+      "4 cups spinach leaves",
+      "2 tablespoons canola oil",
+      "2 1/2 tablespoons cider vinegar",
+      "1 tablespoon sugar",
+      "1/4 teaspoon salt",
+      "1/4 cup red onion (chopped)",
+      "1 medium apple (tart, cut into bite-sized chunks)",
+      "1/4 cup raisins (or dried cranberries)"
     ],
-    steps: [
-      'Chop mushrooms to approximate size and texture of cooked ground beef.',
-      'Heat a sauté pan over medium-high heat.',
-      'Add ground beef and mushrooms, and cook.',
-      'Sauté until ground beef is done.',
-      'Remove mushroom-beef mixture from pan.',
-      'Add onions and garlic to pan; cook until golden.',
-      'Return mushroom-beef mixture to pan, along with remaining ingredients.',
-      'Simmer about 10 minutes; remove from heat.',
+    "steps": [
+      "Wash spinach thoroughly. Pat dry or spin in a salad spinner.",
+      "Tear spinach into bite-sized pieces and place in a large bowl. Set aside.",
+      "In a small bowl mix oil, vinegar, sugar, and salt.",
+      "Add the apple, onion, and dried fruit to the oil mixture and toss to coat apples. Let stand ten minutes.",
+      "Combine ingredients together in the large bowl of spinach and serve.",
+      "Refrigerate leftovers."
     ],
-    notes: [
+    "notes": [
+      "The spinach and oil/vinegar mixture can be prepared ahead and stored separately in the refrigerator.",
+      "To keep the apple from getting brown, cut the apple and add to the oil/vinegar mixture then assemble the salad just before serving. The vinegar in the dressing keeps the apple from browning.",
+      "For a complete meal, add slices of baked or grilled chicken breast and serve with a slice of whole wheat bread and a glass of skim milk.",
+      "Add feta or walnuts for additional flavor!"
     ],
-    mealType: 'Lunch, Dinner',
-    season: 'Winter, Spring, Summer, Fall',
-    sourceName: 'USDA MyPlate',
-    sourceUrl: 'https://www.myplate.gov/recipes/myplate-cnpp/mushroom-beef-sloppy-joes', // 假设的链接
-    imgurl: `/img/mushroomBeefSloppyJoes.png`, // 假设你有相应的图片
-    image: mushroomBeefSloppyJoes, // 假设你有相应的图片
-  },
+    "mealType": "Lunch, Dinner",
+    "season": "Summer, Fall",
+    "sourceName": "University of Minnesota Extension",
+    "sourceUrl": "https://www.extension.umn.edu",
+    "imgurl": `/img/appleSpinachSalad.png`, // 假设的链接
+    "image": appleSpinachSalad // 假设的图片
+  },  
   {
     id: 3,
     title: "'Leftovers' Broccoli Potato Soup",

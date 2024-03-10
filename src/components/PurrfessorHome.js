@@ -5,6 +5,14 @@ import Button from 'react-bootstrap/Button';
 import catImage from "../assets/cat01.png"; 
 import BackgroundComponent from './BackgroundComponent';
 import photo from "../assets/photo.png"; 
+import OpenAI from "openai";
+import OPENAI_API_KEY from '../config/openai';
+
+// 初始化OpenAI实例
+const openai = new OpenAI({
+  apiKey: OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true 
+});
 
 function PurrfessorHome() {
   const [message, setMessage] = useState('');
@@ -22,10 +30,36 @@ function PurrfessorHome() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(message);
+    console.log(OpenAI); // 测试OpenAI是否被正确导入
+    console.log(openai); // 测试openai实例是否可用
+
+    // 处理文本消息
+    try {
+      const completion = await openai.chat.completions.create({
+        messages: [
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: message }, // 使用用户输入的消息
+        ],
+        model: "gpt-3.5-turbo",
+      });
+      console.log(completion.choices[0].message.content); // 打印GPT API的响应
+    } catch (error) {
+      console.error("GPT API请求错误", error);
+    }
+  
+    // 假设性的文件处理逻辑
+    if (selectedFile) {
+      // 1. 上传文件到您的服务器或第三方服务以获取图像的文本描述。
+      // 2. 将获取的文本描述作为prompt发送到OpenAI API（如上所示）。
+  
+      console.log("文件处理逻辑尚未实现。");
+    }
+  
+    // 清空输入
     setMessage('');
+    setSelectedFile(null);
   };
 
   return (

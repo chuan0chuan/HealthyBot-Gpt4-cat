@@ -106,17 +106,18 @@ code {
 }
 
 .keywords-container {
+  font-size: 18px;
   display: flex; 
   flex-direction: column; 
   gap: 20px;
   padding: 20px;
-  margin-top: 100px; 
+  margin-top: 30px; 
 }
 
 .keywords-box {
   width: calc(90vw - 40px);
   max-width: 1200px;
-  margin: 20px; 
+  margin: 15px; 
   height: 20vh; 
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -127,7 +128,7 @@ code {
 }
 
 .keywords-box-large {
-  height: 400px;
+  height: 500px;
 }
 
 
@@ -157,4 +158,24 @@ code {
   width: 80%; 
 }
 
+
+.references-container {
+  text-align: left;
+}
+
+.references-container ul {
+  margin-top: 0.5em; /* 上边距减少 */
+  margin-bottom: 0.5em; /* 下边距减少 */
+}
+
+.references-container p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.selectedArticleTitle {
+  background-color: #f0f0f0; /* 浅灰色背景 */
+  padding: 5px; /* 添加一些内边距 */
+  border-radius: 5px; /* 轻微圆角 */
+}
 
