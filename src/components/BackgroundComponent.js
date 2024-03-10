@@ -10,7 +10,7 @@ function BackgroundComponent({ transparent }) {
 
   return (
     <div className="image-and-text-container" style={containerStyle}>
-      <img style= {{width: '280px', height:'280px'}} src={catImage} alt="Purrfessor"  />
+      <img  src={catImage} alt="Purrfessor"  />
       <p>Hey, I am your Purrfessor!</p>
     </div>
   );
