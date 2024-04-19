@@ -25,7 +25,7 @@ function Layout(props) {
             <Container fluid className="d-flex justify-content-between">
                 <Nav className="flex-row">
                     <NavDropdown title={<img src={drawerImage} alt="Dropdown" className="drawer-icon"/>} id="function-change-icon">
-                        <NavDropdown.Item as={Link} to="/">Purrfessor</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/">AI Agents</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/mythBusters">Myth Busters</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/recipeClub">Recipe Club</NavDropdown.Item>
                     </NavDropdown>
