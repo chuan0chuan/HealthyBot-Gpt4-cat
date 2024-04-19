@@ -45,13 +45,13 @@ function RecipeModal() {
     image: guacamoleImage, // 假设你有相应的图片
   },
   {
-    "id": 2,
-    "title": "Apple Spinach Salad",
-    "category": "30 Minutes or Less",
-    "foodGroup": "Fruits, Vegetables, Dairy",
-    "description": "Add more fruits and vegetables to your day with this simple, flavorful salad.",
-    "yield": "6, 1/2 cup servings",
-    "ingredients": [
+    id: 2,
+    title: "Apple Spinach Salad",
+    category: "30 Minutes or Less",
+    foodGroup: "Fruits, Vegetables, Dairy",
+    description: "Add more fruits and vegetables to your day with this simple, flavorful salad.",
+    yield: "6, 1/2 cup servings",
+    ingredients: [
       "4 cups spinach leaves",
       "2 tablespoons canola oil",
       "2 1/2 tablespoons cider vinegar",
@@ -61,7 +61,7 @@ function RecipeModal() {
       "1 medium apple (tart, cut into bite-sized chunks)",
       "1/4 cup raisins (or dried cranberries)"
     ],
-    "steps": [
+    steps: [
       "Wash spinach thoroughly. Pat dry or spin in a salad spinner.",
       "Tear spinach into bite-sized pieces and place in a large bowl. Set aside.",
       "In a small bowl mix oil, vinegar, sugar, and salt.",
@@ -69,18 +69,18 @@ function RecipeModal() {
       "Combine ingredients together in the large bowl of spinach and serve.",
       "Refrigerate leftovers."
     ],
-    "notes": [
+    notes: [
       "The spinach and oil/vinegar mixture can be prepared ahead and stored separately in the refrigerator.",
       "To keep the apple from getting brown, cut the apple and add to the oil/vinegar mixture then assemble the salad just before serving. The vinegar in the dressing keeps the apple from browning.",
       "For a complete meal, add slices of baked or grilled chicken breast and serve with a slice of whole wheat bread and a glass of skim milk.",
       "Add feta or walnuts for additional flavor!"
     ],
-    "mealType": "Lunch, Dinner",
-    "season": "Summer, Fall",
-    "sourceName": "University of Minnesota Extension",
-    "sourceUrl": "https://www.extension.umn.edu",
-    "imgurl": `/img/appleSpinachSalad.png`, // 假设的链接
-    "image": appleSpinachSalad // 假设的图片
+    mealType: "Lunch, Dinner",
+    season: "Summer, Fall",
+    sourceName: "University of Minnesota Extension",
+    sourceUrl: 'https://reallifegoodfood.umn.edu/salads/apple-spinach-salad',
+    imgurl: `/img/appleSpinachSalad.png`, // 假设的链接
+    image: appleSpinachSalad // 假设的图片
   },  
   {
     id: 3,

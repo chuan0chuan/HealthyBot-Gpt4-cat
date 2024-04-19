@@ -44,6 +44,30 @@ code {
   z-index: -1;
 }
 
+.response-container {
+  font-size: 28px;
+  /* Removed absolute positioning */
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  text-align: left;
+  padding: 0 200px; /* Add padding on the left and right sides */
+  margin-bottom: 2px; /* Add some space between each conversation */
+  z-index: 1; /* Adjust z-index if necessary, but it may not be required */
+  max-width: 2000px;
+  word-break: break-word;
+}
+
+.conversations-container {
+  max-height: 80vh; /* Adjust as needed */
+  overflow-y: auto;
+  position: relative; /* If you need a positioned ancestor for other reasons */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .circle-image {
   border-radius: 50%;
   width: 150px;
@@ -62,15 +86,18 @@ code {
   left: 50%; 
   transform: translateX(-50%); 
   width:  95%; 
-  max-width: 800px;
+  max-width: 1000px;
+  font-size: 28px !important; /* Or any size you prefer */
 }
 
-.input-group-custom {
-  width: 100%; 
+.input-group-custom .form-control {
+  font-size: 28px !important;
+  height: auto; 
 }
+
 
 .upload-icon {
-  height: 50px; 
+  height: 60px; 
   width: auto; 
   margin-right: 3px;
   opacity: 0.6;
@@ -178,4 +205,6 @@ code {
   padding: 5px; /* 添加一些内边距 */
   border-radius: 5px; /* 轻微圆角 */
 }
+
+
 

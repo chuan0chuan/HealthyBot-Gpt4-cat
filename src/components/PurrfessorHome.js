@@ -14,9 +14,23 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true 
 });
 
+function PurrfessorResponseBox({ conversations }) {
+  return (
+    <div className="conversations-container"> {/* This container will scroll if content is too long */}
+      {conversations.map((conv, index) => (
+        <div key={index} className="response-container">
+          <p><strong>You:</strong> {conv.message}</p>
+          <p><strong>Purrfessor:</strong> {conv.response}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function PurrfessorHome() {
   const [message, setMessage] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [conversations, setConversations] = useState([]);
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -42,9 +56,14 @@ function PurrfessorHome() {
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: message }, // 使用用户输入的消息
         ],
-        model: "gpt-3.5-turbo",
+        model: "gpt-4",
       });
       console.log(completion.choices[0].message.content); // 打印GPT API的响应
+      const newConversation = {
+        message: message,
+        response: completion.choices[0].message.content,
+      };
+      setConversations([...conversations, newConversation]);// Update the response state
     } catch (error) {
       console.error("GPT API请求错误", error);
     }
@@ -64,9 +83,13 @@ function PurrfessorHome() {
 
   return (
     <div className="content-container">
-    <BackgroundComponent />
+    {conversations.length === 0 ? (
+      <BackgroundComponent />
+    ) : (
+      <PurrfessorResponseBox conversations={conversations} />
+    )}
       <Form onSubmit={handleSubmit} className="input-form">
-        <InputGroup className="input-group-custom">
+        <InputGroup size="lg" className="input-group-custom">
               <input
                 type="file"
                 accept="image/*"
@@ -82,9 +105,12 @@ function PurrfessorHome() {
             placeholder="Type your message here..." 
             value={message}
             onChange={handleMessageChange}
+            style={{ fontSize: '18px' }}  // Inline style for font size
+            aria-label="Large"
+            aria-describedby="inputGroup-sizing-sm"
           />
           <Button variant="success" type="submit" className="btn-custom">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
             </svg>
           </Button>
