@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import catImage from "../assets/cat01.png"; 
 import BackgroundComponent from './BackgroundComponent';
 import photo from "../assets/photo.png"; 
 import OpenAI from "openai";
