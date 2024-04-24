@@ -1,4 +1,4 @@
 // src/config/openai.js
-const OPENAI_API_KEY = "sk-proj-7nwhbw6PTWau92WM78gjT3BlbkFJsF0zc9dBXhc6xAL2yIbs";
+const OPENAI_API_KEY = "sk-proj-hgd7cybfp2iynTb0q2ksT3BlbkFJZnNzmveBRMdOOy6NUGfT";
 
 export default OPENAI_API_KEY;
