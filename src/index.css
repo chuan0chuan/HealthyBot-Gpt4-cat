@@ -95,6 +95,13 @@ code {
   height: auto; 
 }
 
+.image-preview {
+  margin-top: 1000px;  /* Adjust this value based on your layout needs */
+  display: block;    /* Makes the image block level to respect margin-top */
+  max-width: 100%;   /* Limits the image width */
+  max-height: 300px; /* Limits the image height */
+}
+
 
 .upload-icon {
   height: 60px; 

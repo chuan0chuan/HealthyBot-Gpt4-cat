@@ -15,10 +15,13 @@ const openai = new OpenAI({
 
 function PurrfessorResponseBox({ conversations }) {
   return (
-    <div className="conversations-container"> {/* This container will scroll if content is too long */}
+    <div className="conversations-container">
       {conversations.map((conv, index) => (
         <div key={index} className="response-container">
           <p><strong>You:</strong> {conv.message}</p>
+          {conv.imageUrl && (
+            <img src={conv.imageUrl} alt="User Upload" style={{ maxWidth: '80%', maxHeight: '200px', margin: '10px 0' }} />
+          )}
           <p><strong>Purrfessor:</strong> {conv.response}</p>
         </div>
       ))}
@@ -29,6 +32,7 @@ function PurrfessorResponseBox({ conversations }) {
 function PurrfessorHome() {
   const [message, setMessage] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [fileObject, setFileObject] = useState(null);
   const [conversations, setConversations] = useState([]);
 
   const handleMessageChange = (event) => {
@@ -36,49 +40,99 @@ function PurrfessorHome() {
   };
 
   const handleFileChange = (event) => {
-    // 处理文件选择
     if (event.target.files[0]) {
-      setSelectedFile(event.target.files[0]);
-      // 这里可以添加上传逻辑
+      setSelectedFile(URL.createObjectURL(event.target.files[0])); // 用于预览
+      setFileObject(event.target.files[0]); // 存储文件对象用于上传
     }
   };
+  
+  
+  const uploadImage = async (fileObject) => {
+    const formData = new FormData();
+    formData.append('file', fileObject); // 确保这里使用的是文件对象
+  
+    try {
+      const response = await fetch('http://localhost:5050/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data.url;
+    } catch (error) {
+      console.error('Failed to upload image', error);
+      return null;
+    }
+  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(OpenAI); // 测试OpenAI是否被正确导入
-    console.log(openai); // 测试openai实例是否可用
-
-    // 处理文本消息
+    
+    let newConversation = {
+      message: message,
+      imageUrl: null,
+      response: "",
+    };
+  
     try {
-      const completion = await openai.chat.completions.create({
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: message }, // 使用用户输入的消息
-        ],
-        model: "gpt-4",
+      if (fileObject) {
+        const imageUrl = await uploadImage(fileObject);
+        
+        if (imageUrl) {
+          newConversation.imageUrl = imageUrl;
+          console.log('in PurrfessorHome Image URL:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', imageUrl);
+          // 使用图像URL请求OpenAI API
+          const completion = await openai.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [
+              {
+                "role": "user",
+                "content": [
+                  { "type": "text", "text": message }, // 使用用户输入的消息
+                  { "type": "image_url", "image_url": { "url": imageUrl } }
+                ]
+              }
+            ],
+            max_tokens: 300,
+          });
+          newConversation.response = completion.choices[0].message.content;
+        } else {
+          throw new Error('Image upload failed, cannot proceed with API request.');
+        }
+      } else {
+        // 处理无图像的逻辑
+        const completion = await openai.chat.completions.create({
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: message }
+          ],
+          model: "gpt-4",
+        });
+        newConversation.response = completion.choices[0].message.content;
+      }
+      
+      setConversations([...conversations, newConversation]);
+      
+      await fetch(`http://localhost:5050/record`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newConversation),
       });
-      console.log(completion.choices[0].message.content); // 打印GPT API的响应
-      const newConversation = {
-        message: message,
-        response: completion.choices[0].message.content,
-      };
-      setConversations([...conversations, newConversation]);// Update the response state
     } catch (error) {
-      console.error("GPT API请求错误", error);
+      console.error("处理请求时出现错误", error);
     }
   
-    // 假设性的文件处理逻辑
-    if (selectedFile) {
-      // 1. 上传文件到您的服务器或第三方服务以获取图像的文本描述。
-      // 2. 将获取的文本描述作为prompt发送到OpenAI API（如上所示）。
-  
-      console.log("文件处理逻辑尚未实现。");
-    }
-  
-    // 清空输入
+    // 清空输入和文件选择
     setMessage('');
     setSelectedFile(null);
+    setFileObject(null);  // 清空文件对象状态
   };
+  
 
   return (
     <div className="content-container">
@@ -88,6 +142,7 @@ function PurrfessorHome() {
       <PurrfessorResponseBox conversations={conversations} />
     )}
       <Form onSubmit={handleSubmit} className="input-form">
+      {selectedFile && <img src={selectedFile} alt="Preview" style={{ maxWidth: '80%', maxHeight: '280px' }} />}
         <InputGroup size="lg" className="input-group-custom">
               <input
                 type="file"
